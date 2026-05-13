@@ -38,8 +38,11 @@ pip install torch torchvision matplotlib numpy pillow
 - **MNIST (`--mode mnist`):** Rainbow-MNIST task folders; default search uses `Rainbow-MNIST/` next to the repo or `OMEL_MNIST_TASKS_ROOT`.
 - **CIFAR (`--mode cifar`):** Online task pickle (`--tasks_pkl`) and CIFAR-10 archive (`--tar_path`).
 - **ECNY (`--mode ecny`):** Directory with features / labels / graph files (see `train_ECNY.py` / `stream_aml.py` for expected layout).
+Due to their large size, the Rainbow-MNIST and Online-CIFAR-10 datasets are hosted separately via anonymous download links:
 
-Adjust paths to match your machine.
+- **Rainbow-MNIST:** [Rainbow-MNIST](https://pixeldrain.com/u/WAesq7nz)
+- **Online-CIFAR-10:** [Online-CIFAR-10](https://pixeldrain.com/u/RtAX86uL)
+
 
 ## Quick start (training)
 
