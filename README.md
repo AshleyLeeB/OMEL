@@ -1,44 +1,28 @@
 # OMEL — Online Meta-Expert Learning
 
-Code for **Online Meta-Expert Learning (OMEL)**: online meta-learning with a **multi-scale expert ensemble**, **multiplicative expert weight updates**, and **online distillation** back to a global meta-learner.
-
-## Overview
-
 Online meta-learning combines ideas from meta-learning and online learning to enable rapid adaptation to new tasks in a lifelong learning setting. However, most existing methods rely on explicit task boundaries, which are often unavailable in real-world scenarios such as evolving fraud-pattern detection or user-preference prediction. Experiments show that when task boundaries are ambiguous, the accuracy of online meta-learning can drop by up to 28%. Existing approaches primarily address this issue through heuristic boundary detection or threshold-based parameter adjustment, which are often unreliable under non-stationary environments.
 
-We overcome this limitation by proposing an **Online Meta-Expert Learning (OMEL)** framework. More specifically, OMEL dynamically updates a set of multi-scale experts using multiplicative weight updates, enabling the model to adapt to evolving data distributions at different temporal scales. To balance rapid adaptation and robustness, OMEL integrates a global meta-parameter with the expert ensemble and **employs online distillation** to transfer knowledge back to the meta-learner. We show that OMEL achieves a sublinear fixed-window dynamic regret of $\tilde{O}(\sqrt{\tau})$. Experiments on image classification and transaction anomaly detection demonstrate strong empirical performance.
+We overcome this limitation by proposing an **Online Meta-Expert Learning (OMEL)** framework. More specifically, OMEL dynamically updates a set of multi-scale experts using multiplicative weight updates, enabling the model to adapt to evolving data distributions at different temporal scales. To balance rapid adaptation and robustness, OMEL integrates a global meta-parameter with the expert ensemble and employs online distillation to transfer knowledge back to the meta-learner. 
 
 ## Repository layout
 
 | Path | Role |
 |------|------|
-| `OMEL.py` | Unified entry: `--mode` selects `train_MNIST.py` / `train_CIFAR.py` / `train_ECNY.py`; remaining CLI flags are forwarded. |
+| `OMEL.py` | Unified entry: `--mode` selects `train_MNIST.py` / `train_CIFAR.py` / `train_ECNY.py`|
 | `train_MNIST.py` | Rainbow-MNIST image stream. |
-| `train_CIFAR.py` | Online CIFAR-10 pair stream (requires `--tasks_pkl`). |
-| `train_ECNY.py` | Online ECNY graph / transaction stream. |
+| `train_CIFAR.py` | Online CIFAR-10 image pair stream (requires `--tasks_pkl`). |
+| `train_ECNY.py` | Online ECNY transaction stream. |
 | `plot.py` | Plot curves from `pt/omel_results_*.pt`. |
-| `pt/` | Default directory for saved `omel_results_*_seed*.pt` (created if missing). |
+| `pt/` | Default directory for saved `omel_results_*_seed*.pt`. |
 
 ## Requirements
 
 - **Python** 3.8+ recommended  
-- **Core:** PyTorch, torchvision, NumPy, Pillow, Matplotlib (for `plot.py`)  
-- **ECNY mode:** PyTorch Geometric and project data under your `--data_dir` (see below)
-
-Install dependencies in your environment (example with conda):
-
-```bash
-conda activate your_env
-pip install torch torchvision matplotlib numpy pillow
-# For ECNY / GNN backends, also install torch-geometric and its dependencies.
-```
+- **Core:** PyTorch, torchvision, NumPy, Pillow, Matplotlib
 
 ## Data
 
-- **MNIST (`--mode mnist`):** Rainbow-MNIST task folders; default search uses `Rainbow-MNIST/` next to the repo or `OMEL_MNIST_TASKS_ROOT`.
-- **CIFAR (`--mode cifar`):** Online task pickle (`--tasks_pkl`) and CIFAR-10 archive (`--tar_path`).
-- **ECNY (`--mode ecny`):** Directory with features / labels / graph files (see `train_ECNY.py` / `stream_aml.py` for expected layout).
-Due to their large size, the Rainbow-MNIST and Online-CIFAR-10 datasets are hosted separately via anonymous download links:
+Due to their large size, the Rainbow-MNIST, Online-CIFAR-10, and Online-ECNY datasets are hosted separately via anonymous download links:
 
 - **Rainbow-MNIST:** [Rainbow-MNIST](https://pixeldrain.com/u/WAesq7nz)
 - **Online-CIFAR-10:** [Online-CIFAR-10](https://pixeldrain.com/u/RtAX86uL)
@@ -50,23 +34,22 @@ Due to their large size, the Rainbow-MNIST and Online-CIFAR-10 datasets are host
 From the repository root:
 
 ```bash
-# Optional: activate your environment
-# source /path/to/anaconda3/bin/activate your_env
+activate your environment
 cd /path/to/OMEL
 
 # Rainbow-MNIST
 python OMEL.py --mode mnist --seed 43 --tasks_root ./Rainbow-MNIST/tasks
 
-# Online CIFAR-10
+# Online-CIFAR-10
 python OMEL.py --mode cifar --seed 43 \
   --tasks_pkl ./Online-CIFAR-10/online_cifar10_tasks_1200_unique.pkl \
   --tar_path ./Online-CIFAR-10/cifar-10-python.tar.gz
 
-# Online ECNY
+# Online-ECNY
 python OMEL.py --mode ecny --data_dir ./Online-ECNY
 ```
 
-Each training script accepts additional hyperparameters; run `python OMEL.py --mode <mnist|cifar|ecny> --help` to see the forwarded script’s options (OMEL itself only documents `--mode` in its own `--help`).
+
 
 ## Plotting
 
