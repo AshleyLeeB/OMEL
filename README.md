@@ -26,7 +26,7 @@ Due to their large size, the Rainbow-MNIST, Online-CIFAR-10, and Online-ECNY dat
 
 - **Rainbow-MNIST:** [Rainbow-MNIST](https://www.kaggle.com/datasets/anonymouskaggledata/rainbow-mnist-zip)
 - **Online-CIFAR-10:** [Online-CIFAR-10](https://www.kaggle.com/datasets/anonymouskaggledata/online-cifar-10)
-- **Online-ECNY：**.[Online-ECNY](https://www.kaggle.com/datasets/anonymouskaggledata/online-ecny).
+- **Online-ECNY：** [Online-ECNY](https://www.kaggle.com/datasets/anonymouskaggledata/online-ecny).
 
 
 ## Quick start (training)
