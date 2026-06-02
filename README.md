@@ -24,9 +24,9 @@ We overcome this limitation by proposing an **Online Meta-Expert Learning (OMEL)
 
 Due to their large size, the Rainbow-MNIST, Online-CIFAR-10, and Online-ECNY datasets are hosted separately via anonymous download links:
 
-- **Rainbow-MNIST:** [Rainbow-MNIST](https://pixeldrain.com/u/WAesq7nz)
-- **Online-CIFAR-10:** [Online-CIFAR-10](https://pixeldrain.com/u/RtAX86uL)
-- **Online-ECNY：**.[Online-ECNY](https://pixeldrain.com/u/tPSLbQSU).
+- **Rainbow-MNIST:** [Rainbow-MNIST](https://www.kaggle.com/datasets/anonymouskaggledata/rainbow-mnist-zip)
+- **Online-CIFAR-10:** [Online-CIFAR-10](https://www.kaggle.com/datasets/anonymouskaggledata/online-cifar-10)
+- **Online-ECNY：**.[Online-ECNY](https://www.kaggle.com/datasets/anonymouskaggledata/online-ecny).
 
 
 ## Quick start (training)
